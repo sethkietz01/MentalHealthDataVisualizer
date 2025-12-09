@@ -1,4 +1,4 @@
-using MentalHealthDataVisualizer;
+using MentalHealthDataVisualizer.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

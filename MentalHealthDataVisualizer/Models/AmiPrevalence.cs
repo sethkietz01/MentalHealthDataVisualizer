@@ -2,6 +2,7 @@
 {
     public class AmiPrevalence
     {
+        public int id { get; set; }
         public int data_year { get; set; }
         public string age_category { get; set; }
         public string demographic {  get; set; }

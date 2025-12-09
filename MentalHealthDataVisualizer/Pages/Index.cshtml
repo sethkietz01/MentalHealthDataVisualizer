@@ -1,10 +1,33 @@
 ﻿@page
-@model IndexModel
+@using MentalHealthDataVisualizer.Models
+@model MentalHealthDataVisualizer.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "AMI Prevalence Data";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().data_year)</th>
+            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().age_category)</th>
+            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().demographic)</th>
+            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().tally)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.AmiPrevalenceData != null)
+        {
+            @foreach (var item in Model.AmiPrevalenceData)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.data_year)</td>
+                    <td>@Html.DisplayFor(modelItem => item.age_category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.demographic)</td>
+                    <td>@Html.DisplayFor(modelItem => item.tally)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
