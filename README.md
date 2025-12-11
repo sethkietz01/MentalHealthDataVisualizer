@@ -1,6 +1,6 @@
 # Mental Health Data Visualizer
 
-**Project Goal:** Provides an interactive data visualization platform for mental health data from the 2024 National Survey on Drug Use and Health (NSDUH) to easily identify trends and patterns.
+Provides an interactive data visualization platform for mental health data from the 2024 National Survey on Drug Use and Health to easily identify trends and patterns.
 
 ---
 
