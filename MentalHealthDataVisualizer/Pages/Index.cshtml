@@ -2,18 +2,20 @@
 @using MentalHealthDataVisualizer.Models
 @model MentalHealthDataVisualizer.Models.IndexModel
 @{
-    ViewData["Title"] = "Any Mental Illness Prevalence Data";
+    ViewData["Title"] = "Any Mental Illness in Past Year Prevalence Data";
 }
 
 <h1>@ViewData["Title"]</h1>
 
+
+<h4>Among People Aged 18 or Older; by Sex and Detailed Age Category, Numbers in Thousands, 2023 and 2024</h4>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().data_year)</th>
-            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().age_category)</th>
-            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().demographic)</th>
-            <th>@Html.DisplayNameFor(model => model.AmiPrevalenceData.First().tally)</th>
+            <th>Year</th>
+            <th>Age Category</th>
+            <th>Demographic</th>
+            <th>Tally</th>
         </tr>
     </thead>
     <tbody>
