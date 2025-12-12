@@ -2,9 +2,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MentalHealthDataVisualizer.Data;
-using MentalHealthDataVisualizer.Models;
 
-namespace MentalHealthDataVisualizer.Pages
+namespace MentalHealthDataVisualizer.Models
 {
     public class IndexModel : PageModel
     {

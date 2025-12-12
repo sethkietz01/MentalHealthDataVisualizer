@@ -1,8 +1,9 @@
 ﻿@page
 @using MentalHealthDataVisualizer.Models
-@model MentalHealthDataVisualizer.Pages.IndexModel
+@model MentalHealthDataVisualizer.Models.IndexModel
 @{
 
+    // Sort data by demographic and sum the tallies 
     var demographicData = Model.AmiPrevalenceData
         .GroupBy(d => d.demographic)
         .Select(g => new
@@ -12,13 +13,16 @@
         })
         .ToList();
 
+    // Extract data to lists
     var demographicLabels = demographicData.Select(d => d.Demographic).ToList();
     var demographicValues = demographicData.Select(d => d.TotalTally).ToList();
 
+    // Convert lists to JSON 
     var demographicLabelsJson = System.Text.Json.JsonSerializer.Serialize(demographicLabels);
     var demographicValuesJson = System.Text.Json.JsonSerializer.Serialize(demographicValues);
 
 
+    // Sort data by age category and sum the tallies
     var ageCategoryData = Model.AmiPrevalenceData
         .Where(d => !string.IsNullOrEmpty(d.age_category)) 
         .GroupBy(d => d.age_category)
@@ -30,9 +34,11 @@
         .OrderBy(d => d.AgeCategory) 
         .ToList();
 
+    // Extract data to lists
     var ageCategoryLabels = ageCategoryData.Select(d => d.AgeCategory).ToList();
     var ageCategoryValues = ageCategoryData.Select(d => d.TotalTally).ToList();
 
+    // Convert lists to JSON
     var ageCategoryLabelsJson = System.Text.Json.JsonSerializer.Serialize(ageCategoryLabels);
     var ageCategoryValuesJson = System.Text.Json.JsonSerializer.Serialize(ageCategoryValues);
 }
@@ -59,9 +65,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
     <script>
+        // Inject JSON
         const demographicLabels = @Html.Raw(demographicLabelsJson);
         const demographicValues = @Html.Raw(demographicValuesJson);
-
+        
+        // Set up demographic chart data
         const demographicData = {
             labels: demographicLabels,
             datasets: [{
@@ -73,6 +81,7 @@
             }]
         };
 
+        // Configure demographic bar chart
         const demographicConfig = {
             type: 'bar',
             data: demographicData,
@@ -91,15 +100,18 @@
             }
         };
 
+        // Instantiate demographic chart
         new Chart(
             document.getElementById('demographicChart'),
             demographicConfig
         );
 
 
-           const yearLabels = @Html.Raw(ageCategoryLabelsJson); // Use new labels
-        const yearValues = @Html.Raw(ageCategoryValuesJson); // Use new values
+        // Inject JSON
+        const yearLabels = @Html.Raw(ageCategoryLabelsJson); 
+        const yearValues = @Html.Raw(ageCategoryValuesJson); 
 
+        // Set up year chart data
         const yearData = {
             labels: yearLabels,
             datasets: [{
@@ -111,6 +123,7 @@
             }]
         };
 
+        // Configure year bar chart
         const yearConfig = {
             type: 'bar',
             data: yearData,
@@ -130,6 +143,7 @@
             }
         };
 
+        // Instantiate year chart
         new Chart(
             document.getElementById('yearChart'),
             yearConfig
