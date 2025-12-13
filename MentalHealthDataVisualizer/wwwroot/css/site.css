@@ -28,3 +28,8 @@ body {
 .navbar-brand, .nav-link {
     color: white;
 }
+
+.table_header_sortable {
+    color: black;
+    text-decoration: none;
+}

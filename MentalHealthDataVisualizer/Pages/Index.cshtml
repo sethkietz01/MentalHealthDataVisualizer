@@ -12,10 +12,58 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Year</th>
-            <th>Age Category</th>
-            <th>Demographic</th>
-            <th>Tally</th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.YearSort" class="table_header_sortable">
+                    Year
+                    @if (Model.CurrentSort == "Year")
+                    {
+                        <i class="bi bi-caret-up-fill"></i>
+                    }
+                    else if (Model.CurrentSort == "Year_desc")
+                    {
+                        <i class="bi bi-caret-down-fill"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AgeCategorySort" class="table_header_sortable">
+                    Age Category
+                    @if (Model.CurrentSort == "Age")
+                    {
+                        <i class="bi bi-caret-up-fill"></i>
+                    }
+                    else if (Model.CurrentSort == "Age_desc")
+                    {
+                        <i class="bi bi-caret-down-fill"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DemographicSort" class="table_header_sortable">
+                    Demographic
+                    @if (Model.CurrentSort == "Demo")
+                    {
+                        <i class="bi bi-caret-up-fill"></i>
+                    }
+                    else if (Model.CurrentSort == "Demo_desc")
+                    {
+                        <i class="bi bi-caret-down-fill"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TallySort" class="table_header_sortable">
+                    Tally
+                    @if (Model.CurrentSort == "Tally")
+                    {
+                        <i class="bi bi-caret-up-fill"></i>
+                    }
+                    else if (Model.CurrentSort == "Tally_desc")
+                    {
+                        <i class="bi bi-caret-down-fill"></i>
+                    }
+                </a>
+            </th>
         </tr>
     </thead>
     <tbody>
