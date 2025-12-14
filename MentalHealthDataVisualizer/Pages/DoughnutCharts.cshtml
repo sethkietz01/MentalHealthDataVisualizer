@@ -1,6 +1,152 @@
 ﻿@page
 @using MentalHealthDataVisualizer.Models;
-@model MentalHealthDataVisualizer.Models.IndexModel
+@model MentalHealthDataVisualizer.Models.DoughnutChartsModel
 @{
+    // Sort data by demographic and sum the tallies
+    var demographicData = Model.AmiPrevalenceData
+        .GroupBy(d => d.demographic)
+        .Select(g => new
+        {
+            Demographic = g.Key,
+            TotalTally = g.Sum(d => d.tally)
+        })
+        .ToList();
 
+    // Extract data to lists
+    var demographicLabels = demographicData.Select(d => d.Demographic).ToList();
+    var demographicValues = demographicData.Select(d => d.TotalTally).ToList();
+
+    // Convert lists to JSON
+    var demographicLabelsJson = System.Text.Json.JsonSerializer.Serialize(demographicLabels);
+    var demographicValuesJson = System.Text.Json.JsonSerializer.Serialize(demographicValues);
+
+
+    // Sort data by age category and sum the tallies
+    var ageCategoryData = Model.AmiPrevalenceData
+        .Where(d => !string.IsNullOrEmpty(d.age_category))
+        .GroupBy(d => d.age_category)
+        .Select(g => new
+        {
+            AgeCategory = g.Key,
+            TotalTally = g.Sum(d => d.tally)
+        })
+        .OrderBy(d => d.AgeCategory)
+        .ToList();
+
+    // Extract data to lists
+    var ageCategoryLabels = ageCategoryData.Select(d => d.AgeCategory).ToList();
+    var ageCategoryValues = ageCategoryData.Select(d => d.TotalTally).ToList();
+
+    // Convert lists to JSON
+    var ageCategoryLabelsJson = System.Text.Json.JsonSerializer.Serialize(ageCategoryLabels);
+    var ageCategoryValuesJson = System.Text.Json.JsonSerializer.Serialize(ageCategoryValues);
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>AMI Tally by Demographic</h3>
+        <div class="chart-container" style="height:350px;">
+            <canvas id="demographicChart"></canvas>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h3>AMI Tally by Age Category</h3>
+        <div class="chart-container" style="height:350px;">
+            <canvas id="yearChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <script>
+        const demographicColors = [
+            'rgba(175, 82, 222, 0.9)',   // Purple
+            'rgba(0, 122, 255, 0.9)',    // Blue
+            'rgba(255, 59, 48, 0.9)'    // Red
+        ];
+
+        const ageCategoryColors = [
+            'rgba(255, 0, 0, 0.9)',      // 1. Red
+            'rgba(255, 0, 127, 0.9)',    // 2. Rose 
+            'rgba(255, 127, 0, 0.9)',    // 3. Orange
+            'rgba(255, 255, 0, 0.9)',    // 4. Yellow
+            'rgba(127, 255, 0, 0.9)',    // 5. Lime 
+            'rgba(0, 255, 0, 0.9)',      // 6. Green
+            'rgba(0, 255, 255, 0.9)',    // 7. Teal 
+            'rgba(0, 0, 255, 0.9)',      // 8. Blue
+            'rgba(75, 0, 130, 0.9)',     // 9. Indigo
+            'rgba(148, 0, 211, 0.9)',    // 10. Violet
+            'rgba(255, 0, 255, 0.9)'     // 11. Magenta 
+        ];
+
+        // Inject JSON
+        const demographicLabels = @Html.Raw(demographicLabelsJson);
+        const demographicValues = @Html.Raw(demographicValuesJson);
+        
+        // Set up demographic chart data
+        const demographicData = {
+            labels: demographicLabels,
+            datasets: [{
+                label: 'Total AMI Tally',
+                data: demographicValues,
+                backgroundColor: demographicColors.slice(0, demographicLabels.length),
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        };
+
+        // Configure demographic bar chart
+        const demographicConfig = {
+            type: 'doughnut',
+            data: demographicData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        };
+
+        // Instantiate demographic chart
+        new Chart(
+            document.getElementById('demographicChart'),
+            demographicConfig
+        );
+
+
+        // Inject JSON
+        const yearLabels = @Html.Raw(ageCategoryLabelsJson); 
+        const yearValues = @Html.Raw(ageCategoryValuesJson); 
+
+        // Set up year chart data
+        const yearData = {
+            labels: yearLabels,
+            datasets: [{
+                label: 'Total AMI Tally',
+                data: yearValues,
+                backgroundColor: ageCategoryColors.slice(0, yearLabels.length),
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        };
+
+        // Configure year bar chart
+        const yearConfig = {
+            type: 'doughnut',
+            data: yearData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        };
+
+        // Instantiate year chart
+        new Chart(
+            document.getElementById('yearChart'),
+            yearConfig
+        );
+    </script>
 }
