@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MentalHealthDataVisualizer.Data;
-using MentalHealthDataVisualizer.Models;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace MentalHealthDataVisualizer.Models
 {
