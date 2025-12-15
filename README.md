@@ -10,6 +10,9 @@ Provides an interactive data visualization platform for mental health data from 
 * **Data Visualization:** Chart.js (Open-source JavaScript library)
 * **Database Management:** Microsoft SQL Server 2022 Express (managed via SSMS and T-SQL)
 
+# Project Context
+The National Survey on Drug Use and Health is an annual survey conducted nationwide in the United States that reports crucial data on the use of illicit drugs and mental health disorders in the general populace. While this data in table form is invaluable, it can be difficult to compare and visualize the data. This project aims to solve this issue by taking table data and organizing it into graphs including bar charts, doughnut charts, and scatter plots, to easily identify key information, patterns and trends in the data. This provides clear and concise data visualization for use by data analysts to easily draw conclusions from the data, rather than parsing through large tables.
+
 # Project Preview
 **Tables view**
 ![Tables View](MentalHealthDataVisualizer/Screenshots/Table%20View.png)
