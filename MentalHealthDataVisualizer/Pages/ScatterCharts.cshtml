@@ -1,0 +1,111 @@
+﻿@page
+@using MentalHealthDataVisualizer.Models;
+@model MentalHealthDataVisualizer.Models.ScatterChartsModel
+@{
+    var demographicData = Model.AmiPrevalenceData
+        .GroupBy(d => d.demographic)
+        .Select(g => new { Demographic = g.Key, TotalTally = g.Sum(d => d.tally) })
+        .ToList();
+
+    var demographicLabelsJson = System.Text.Json.JsonSerializer.Serialize(demographicData.Select(d => d.Demographic));
+    var demographicValuesJson = System.Text.Json.JsonSerializer.Serialize(demographicData.Select(d => d.TotalTally));
+
+    var ageCategoryData = Model.AmiPrevalenceData
+        .Where(d => !string.IsNullOrEmpty(d.age_category))
+        .GroupBy(d => d.age_category)
+        .Select(g => new { AgeCategory = g.Key, TotalTally = g.Sum(d => d.tally) })
+        .OrderBy(d => d.AgeCategory)
+        .ToList();
+
+    var ageCategoryLabelsJson = System.Text.Json.JsonSerializer.Serialize(ageCategoryData.Select(d => d.AgeCategory));
+    var ageCategoryValuesJson = System.Text.Json.JsonSerializer.Serialize(ageCategoryData.Select(d => d.TotalTally));
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>AMI Tally by Demographic</h3>
+        <div class="chart-container" style="height:400px;">
+            <canvas id="demographicChart"></canvas>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h3>AMI Tally by Age Category</h3>
+        <div class="chart-container" style="height:400px;">
+            <canvas id="yearChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <script>
+        function formatScatterData(labels, values) {
+            return labels.map((label, index) => ({
+                x: index, 
+                y: values[index]
+            }));
+        }
+
+        const demoLabels = @Html.Raw(demographicLabelsJson);
+        const demoValues = @Html.Raw(demographicValuesJson);
+
+        new Chart(document.getElementById('demographicChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'AMI Tally',
+                    data: formatScatterData(demoLabels, demoValues),
+                    backgroundColor: 'rgba(175, 82, 222, 0.9)',
+                    pointRadius: 8,
+                    pointHoverRadius: 12
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) { return demoLabels[value]; }
+                        },
+                        title: { display: true, text: 'Demographic' }
+                    },
+                    y: { title: { display: true, text: 'Tally' } }
+                }
+            }
+        });
+
+        const ageLabels = @Html.Raw(ageCategoryLabelsJson);
+        const ageValues = @Html.Raw(ageCategoryValuesJson);
+
+        new Chart(document.getElementById('yearChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'AMI Tally',
+                    data: formatScatterData(ageLabels, ageValues),
+                    backgroundColor: 'rgba(0, 122, 255, 0.9)',
+                    pointRadius: 8,
+                    pointHoverRadius: 12
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) { return ageLabels[value]; }
+                        },
+                        title: { display: true, text: 'Age Category' }
+                    },
+                    y: { title: { display: true, text: 'Tally' } }
+                }
+            }
+        });
+    </script>
+}
