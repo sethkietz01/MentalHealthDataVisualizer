@@ -9,6 +9,10 @@
 
 
 <h4>Among People Aged 18 or Older; by Sex and Detailed Age Category, Numbers in Thousands, 2023 and 2024</h4>
+<button onclick="exportTableToCSV('mental_health_data.csv')" class="btn export-btn">
+    Export Table to CSV
+</button>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -81,3 +85,32 @@
         }
     </tbody>
 </table>
+
+<script>
+    function exportTableToCSV(filename) 
+    {
+        var csv = []; // Holds comma separated values
+        var rows = document.querySelectorAll("table tr"); // Get all rows of the table
+
+        // Parse data
+        for (var i = 0; i < rows.length; i++) {
+            var row = [] // Holds the current row
+            var cols = rows[i].querySelectorAll("td, th");
+
+            // Encapsulate each column in the row in quotes
+            for (var j = 0; j < cols.length; j++)
+                row.push('"' + cols[j].innerText.trim() + '"'); 
+
+            csv.push(row.join(",")); // Comma deliminate
+        }
+
+        // Download CSV file
+        var csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+        var downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+</script>
