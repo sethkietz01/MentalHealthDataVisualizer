@@ -31,6 +31,9 @@ of the 2024 National Survey on Drug Use and Health are in the database.
 **Doughnut Charts View**
 ![Doughnut Charts View](MentalHealthDataVisualizer/Screenshots/Doughnut%20Chart%20View.png)
 
+**Scatter Charts View**
+![Scatter Charts View](MentalHealthDataVisualizer/Screenshots/Scatter%20Chart%20View.png)
+
 # Project Management
 This project is managed using an Agile development methodology (Kanban) through Jira to track feature implementation as Epics, Stories and Tasks.
 ![Jira Board View](MentalHealthDataVisualizer/Screenshots/Jira%20Board.png)
