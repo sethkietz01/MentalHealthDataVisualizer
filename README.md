@@ -4,6 +4,11 @@ Provides an interactive data visualization platform for mental health data from 
 
 ---
 
+# Getting Started
+The most recent publish may be viewed here: https://mentalhealthdatavisualizer-fwfvb5afb3bwdjbb.canadacentral-01.azurewebsites.net
+
+Please note that this application is hosted on Azure using the free tier (F1), which has strict limitations. The app will likely have to cold start, which may take a while to start up, and is limited to 1 hour of usage per day. Therefore it may be possible that this limit has been exceeded and the app will no longer function until the daily limit resets.
+
 # Technology Stack
 
 * **Backend & Logic:** C# / ASP.NET Core (Razor Pages)
@@ -12,9 +17,9 @@ Provides an interactive data visualization platform for mental health data from 
 * **Data Visualization:** Chart.js (Open-source JavaScript library)
 
   I chose Chart.js because it is an easy and powerful open-source library that allows for highly-customizable and diverse charts that I am already familiar with from my other projects.
-* **Database Management:** Microsoft SQL Server 2022 Express (managed via SSMS and T-SQL)
+* **Database Management:** Microsoft Azure SQL Server (managed via SSMS, T-SQL)
 
-  I chose Microsoft SQL products because it seemed like a logical choice given the use of other Microsoft products (.NET, Azure).
+  I chose Microsoft SQL products because it seemed like a logical choice given the use of other Microsoft products (.NET, Azure App Services).
 
 # Project Context
 The National Survey on Drug Use and Health is an annual survey conducted nationwide in the United States that reports crucial data on the use of illicit drugs and mental health disorders in the general populace. While this data in table form is invaluable, it can be difficult to compare and visualize the data. This project aims to solve this issue by taking table data and organizing it into graphs including bar charts, doughnut charts, and scatter plots, to easily identify key information, patterns and trends in the data. This provides clear and concise data visualization for use by data analysts to easily draw conclusions from the data, rather than parsing through large tables.
@@ -44,11 +49,7 @@ This section provides the planned features to be implemented.
 1.  **Dynamic Data Filtering**
     * **Reason:** To ensure efficient data retrieval, security, and performance when handling complex queries.
     * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries to optimize performance and mitigate SQL Injection risks.
-
-2.  **Cloud Hosting on Azure Web Apps**
-    * **Reason:** To provide a reliable, scalable, and professional hosting environment.
-    * **Action:** Migrate the application to be hosted on Azure Web Apps and secure the database connection string using Azure Key Vault.
   
-3.  **CI/CD Pipeline Integration**
+2.  **CI/CD Pipeline Integration**
     * **Reason:** To automate the software release lifecycle Source -> Build -> Test -> Deploy.
     * **Action:** Configure a GitHub Actions workflow to run unit tests on code commits and automatically deploy successful builds to the Azure Web App.
