@@ -45,18 +45,10 @@ This section provides the planned features to be implemented.
     * **Reason:** To ensure efficient data retrieval, security, and performance when handling complex queries.
     * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries to optimize performance and mitigate SQL Injection risks.
 
-2.  **More Chart Types**
-    * **Reason:** To provide additional visualizations of NSDUH data.
-    * **Action:** Introduce donut charts, scatter plots, etc. via Chart.js.
-  
-3.  **Export to CSV**
-    * **Reason:** To allow a compatilbe format for exporting filtered or unfiltered data for use in a spreadsheet.
-    * **Action:** Implement client-side logic using JavaScript/Chart.js to extract the table data into a downloadable CSV file.
-
-4.  **Cloud Hosting on Azure Web Apps**
+2.  **Cloud Hosting on Azure Web Apps**
     * **Reason:** To provide a reliable, scalable, and professional hosting environment.
     * **Action:** Migrate the application to be hosted on Azure Web Apps and secure the database connection string using Azure Key Vault.
   
-5.  **CI/CD Pipeline Integration**
+3.  **CI/CD Pipeline Integration**
     * **Reason:** To automate the software release lifecycle Source -> Build -> Test -> Deploy.
     * **Action:** Configure a GitHub Actions workflow to run unit tests on code commits and automatically deploy successful builds to the Azure Web App.
