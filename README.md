@@ -46,11 +46,11 @@ This project is managed using an Agile development methodology (Kanban) through 
 # Project Plan
 This section provides the planned features to be implemented.
 
-1.  **Mobile Optimization**
+1. **Mobile Optimization**
    * **Reason:** To ensure smooth compatibility with mobile devices.
    * **Action:** Implement grid systems using bootstrap, swap pixel measurements for rems, ensure proper content widths.
    
-2   **Dynamic Data Filtering**
+2.  **Dynamic Data Filtering**
     * **Reason:** To ensure efficient data retrieval, security, and performance when handling complex queries.
     * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries to optimize performance and mitigate SQL Injection risks.
   
