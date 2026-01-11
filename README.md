@@ -21,6 +21,10 @@ Please note that this application is hosted on Azure using the free tier (F1), w
 
   I chose Microsoft SQL products because it seemed like a logical choice given the use of other Microsoft products (.NET, Azure App Services).
 
+* **Testing & Quality Assurance:** xUnit / Moq
+  
+  I implemented xUnit to ensure the integrity of data transformations. By testing edge cases (like null values or empty datasets), I ensure the application gracefully handles invalid data.
+
 # Project Context
 The National Survey on Drug Use and Health is an annual survey conducted nationwide in the United States that reports crucial data on the use of illicit drugs and mental health disorders in the general populace. While this data in table form is invaluable, it can be difficult to compare and visualize the data. This project aims to solve this issue by taking table data and organizing it into graphs including bar charts, doughnut charts, and scatter plots, to easily identify key information, patterns and trends in the data. This provides clear and concise data visualization for use by data analysts to easily draw conclusions from the data, rather than parsing through large tables.
 
