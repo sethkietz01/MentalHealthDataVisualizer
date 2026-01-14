@@ -44,7 +44,7 @@ of the 2024 National Survey on Drug Use and Health are in the database.
 ![Scatter Charts View](MentalHealthDataVisualizer/Screenshots/Scatter%20Chart%20View.png)
 
 # Project Management
-This project is managed using an Agile development methodology (Kanban) through Jira to track feature implementation as Epics, Stories and Tasks.
+This project is managed using an Agile development methodology (Kanban) through Jira to track feature implementation.
 ![Jira Board View](MentalHealthDataVisualizer/Screenshots/Jira%20Board.png)
 
 # Project Plan
@@ -56,7 +56,7 @@ This section provides the planned features to be implemented.
    
 2.  **Dynamic Data Filtering**
     * **Reason:** To ensure efficient data retrieval, security, and performance when handling complex queries.
-    * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries to optimize performance and mitigate SQL Injection risks.
+    * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries.
   
 3.  **CI/CD Pipeline Integration**
     * **Reason:** To automate the software release lifecycle.
