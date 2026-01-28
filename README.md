@@ -4,6 +4,9 @@ Provides an interactive data visualization platform for mental health data from 
 
 ---
 
+# Project Context
+The National Survey on Drug Use and Health is an annual survey conducted nationwide in the United States that reports crucial data on the use of illicit drugs and mental health disorders in the general populace. While this data in table form is useful, it can be difficult to compare and visualize the data. This project aims to solve this issue by taking table data and organizing it into graphs including bar charts, doughnut charts, and scatter plots, to easily identify key information, patterns and trends in the data. This provides clear and concise data visualization for use by data analysts and public health specialists to easily draw conclusions from the data, rather than parsing through large tables. By translating SQL datasets into visualizations, we promote data democracy by creating simple, interactive, easily understandable graphs and charts to identify high-risk populations without using statistical software.
+
 # Getting Started
 The most recent publish may be viewed here: https://mentalhealthdatavisualizer-fwfvb5afb3bwdjbb.canadacentral-01.azurewebsites.net
 
@@ -21,8 +24,9 @@ Please note that this application is hosted on Azure using the free tier (F1), w
 
   I chose Microsoft SQL products because it seemed like a logical choice given the use of other Microsoft products (.NET, Azure App Services).
 
-# Project Context
-The National Survey on Drug Use and Health is an annual survey conducted nationwide in the United States that reports crucial data on the use of illicit drugs and mental health disorders in the general populace. While this data in table form is invaluable, it can be difficult to compare and visualize the data. This project aims to solve this issue by taking table data and organizing it into graphs including bar charts, doughnut charts, and scatter plots, to easily identify key information, patterns and trends in the data. This provides clear and concise data visualization for use by data analysts to easily draw conclusions from the data, rather than parsing through large tables.
+* **Testing & Quality Assurance:** xUnit / Moq
+  
+  I implemented xUnit to ensure the integrity of data transformations. By testing edge cases (like null values or empty datasets), I ensure the application gracefully handles invalid data.
 
 # Project Preview
 **Tables view**
@@ -40,7 +44,7 @@ of the 2024 National Survey on Drug Use and Health are in the database.
 ![Scatter Charts View](MentalHealthDataVisualizer/Screenshots/Scatter%20Chart%20View.png)
 
 # Project Management
-This project is managed using an Agile development methodology (Kanban) through Jira to track feature implementation as Epics, Stories and Tasks.
+This project is managed using an Agile development methodology (Kanban) through Jira to track feature implementation.
 ![Jira Board View](MentalHealthDataVisualizer/Screenshots/Jira%20Board.png)
 
 # Project Plan
@@ -52,8 +56,8 @@ This section provides the planned features to be implemented.
    
 2.  **Dynamic Data Filtering**
     * **Reason:** To ensure efficient data retrieval, security, and performance when handling complex queries.
-    * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries to optimize performance and mitigate SQL Injection risks.
+    * **Action:** Implement filtering logic using T-SQL Stored Procedures and parameterized queries.
   
 3.  **CI/CD Pipeline Integration**
-    * **Reason:** To automate the software release lifecycle Source -> Build -> Test -> Deploy.
+    * **Reason:** To automate the software release lifecycle.
     * **Action:** Configure a GitHub Actions workflow to run unit tests on code commits and automatically deploy successful builds to the Azure Web App.
