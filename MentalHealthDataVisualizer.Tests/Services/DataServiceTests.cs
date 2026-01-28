@@ -52,11 +52,11 @@ namespace MentalHealthDataVisualizer.Tests
             // Arrange
             var service = new DataService();
             var mixedData = new List<AmiPrevalence>
-    {
-        new AmiPrevalence { age_category = "18-25", tally = 50 },
-        new AmiPrevalence { age_category = "", tally = 999 }, // Should be ignored
-        new AmiPrevalence { age_category = null, tally = 888 } // Should be ignored
-    };
+            {
+                new AmiPrevalence { age_category = "18-25", tally = 50 },
+                new AmiPrevalence { age_category = "", tally = 999 }, // Should be ignored
+                new AmiPrevalence { age_category = null, tally = 888 } // Should be ignored
+            };
 
             // Act
             var result = service.GetAgeCategorySummaries(mixedData);

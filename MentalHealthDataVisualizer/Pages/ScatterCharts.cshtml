@@ -67,6 +67,23 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                // 'label' controls the text inside the tooltip box
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y; // This shows ONLY the Tally
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
                 scales: {
                     x: {
                         ticks: {
@@ -96,6 +113,23 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            // 'label' controls the text inside the tooltip box
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y; // This shows ONLY the Tally
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
                 scales: {
                     x: {
                         ticks: {
