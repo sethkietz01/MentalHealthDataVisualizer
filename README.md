@@ -31,8 +31,7 @@ Please note that this application is hosted on Azure using the free tier (F1), w
 # Project Preview
 **Tables view**
 ![Tables View](MentalHealthDataVisualizer/Screenshots/Table%20View.png)
-The landing page, also the table view page, displays the data in a table format. The table may be sorted by any column ascending or descending, for example sorted from highest to lowest tally. Currently, only the contents of Table 6.1A from the results
-of the 2024 National Survey on Drug Use and Health are in the database.
+The landing page, also the table view page, displays the data in a table format. The table may be sorted by any column ascending or descending, for example sorted from highest to lowest tally, and you may export the table to a CSV file. Currently, only the contents of Table 6.1A from the results of the 2024 National Survey on Drug Use and Health are in the database.
 
 **Bar Charts View**
 ![Bar Charts View](MentalHealthDataVisualizer/Screenshots/Bar%20Chart%20View.png)
